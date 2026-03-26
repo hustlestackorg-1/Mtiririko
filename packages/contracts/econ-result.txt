@@ -1,0 +1,43 @@
+﻿
+
+  Phase 11: Cryptoeconomic Stress Tests
+    BatchSettlement: Relayer Profitability in Gas Spikes
+node.exe : Warning: Potentially unsafe deployment of 
+contracts/BatchSettlement.sol:BatchSettlement
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" 
+"C:\Users\Abigail Njeri\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: 
+    Potent...BatchSettlement:String) [], RemoteExcep  
+  tion
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+    You are using the `unsafeAllow.constructor` flag.
+
+      Γ£ö Should dynamically scale relayer fees when gas equivalent increases massively
+Warning: Potentially unsafe deployment of 
+contracts/BatchSettlement.sol:BatchSettlement
+
+    You are using the `unsafeAllow.constructor` flag.
+
+      Γ£ö Should prevent Relayer 2 from sniping an intent assigned strictly to Relayer 1 via MEV Window
+    MerchantAdvance: Local Shock & Insolvency Protection
+Warning: Potentially unsafe deployment of 
+contracts/BatchSettlement.sol:BatchSettlement
+
+    You are using the `unsafeAllow.constructor` flag.
+
+      Γ£ö Should revert gracefully if the Advance Pool lacks liquidity for a shock spike
+Warning: Potentially unsafe deployment of 
+contracts/BatchSettlement.sol:BatchSettlement
+
+    You are using the `unsafeAllow.constructor` flag.
+
+      Γ£ö Should correctly deduct a 1% spread from a successful merchant liquidity advance
+
+
+  4 passing (1s)
+

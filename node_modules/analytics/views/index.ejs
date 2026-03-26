@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mtiririko | Sandbox Analytics</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=IBM+Plex+Mono:wght@500&family=Space+Grotesk:wght@700&family=Reem+Kufi&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            teal: '#005F73',
+                            gold: '#E9B44C',
+                            charcoal: '#0F172A',
+                            paper: '#F8FAFC',
+                            mpesa: 'rgba(0, 168, 89, 0.6)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'monospace'],
+                        swahili: ['Reem Kufi', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #005F73 0%, #0F172A 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-gradient::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: radial-gradient(circle at top right, rgba(233, 180, 76, 0.15), transparent 50%);
+            pointer-events: none;
+        }
+
+        .table-row-hover:hover {
+            background-color: rgba(233, 180, 76, 0.05);
+            transition: background-color 0.2s ease;
+        }
+
+        .animate-flow {
+            animation: flowX 15s linear infinite;
+        }
+
+        @keyframes flowX {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-brand-paper text-brand-charcoal font-sans antialiased selection:bg-brand-gold selection:text-white">
+
+    <!-- Top Institutional Banner -->
+    <div class="bg-brand-charcoal text-white text-xs py-2 px-6 flex justify-between items-center opacity-90">
+        <div class="flex items-center space-x-3">
+            <span class="font-mono text-brand-gold">CBK Sandbox Environment</span>
+            <span class="hidden md:inline text-gray-400">| Regulatory Data Privacy Compliant (DPA 2019)</span>
+        </div>
+        <div>v2.1.0-RC</div>
+    </div>
+
+    <!-- Hero Header -->
+    <header class="hero-gradient text-white pt-20 pb-24 px-6 lg:px-20 text-center lg:text-left relative shadow-xl">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between z-10 relative">
+            <div class="lg:w-1/2">
+                <div
+                    class="mb-4 inline-block px-4 py-1.5 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-sm font-semibold tracking-wide">
+                    Kenya's L2 Infrastructure
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-display font-bold mb-6 tracking-tight leading-tight">
+                    Flowing Value, <br /> <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-200">Zero
+                        Friction.</span>
+                </h1>
+                <p class="font-swahili text-2xl mb-8 text-cyan-100/80">"Fedha Zinasonga Bila Kukwama"</p>
+                <a href="/api/csv"
+                    class="inline-flex items-center justify-center px-8 py-4 bg-brand-gold text-brand-charcoal rounded-xl font-bold text-lg hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(233,180,76,0.3)]">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    Export Compliance Report (CSV)
+                </a>
+            </div>
+
+            <div class="lg:w-5/12 mt-12 lg:mt-0 w-full">
+                <!-- Data Overview Card -->
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 shadow-2xl">
+                    <h3 class="text-cyan-100 font-semibold mb-2 uppercase tracking-wider text-sm">Ecosystem Volume
+                        (cKES)</h3>
+                    <div class="text-5xl font-mono font-bold text-white mb-6">
+                        <%= totalVolume.toLocaleString() %> <span class="text-2xl text-brand-gold">Ksh</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                            <span class="text-cyan-100">Tx Processed</span>
+                            <span class="font-mono text-xl">
+                                <%= transactions.length %>
+                            </span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-cyan-100">KYC Anomalies (>1M)</span>
+                            <span
+                                class="font-mono text-xl <%= anomalies.length > 0 ? 'text-red-400 font-bold' : 'text-green-400' %>">
+                                <%= anomalies.length %> Flags
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 lg:px-20 py-16">
+
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <h2 class="text-3xl font-display font-bold text-brand-charcoal mb-2">Real-Time Ledger</h2>
+                <p class="text-gray-500 font-sans">Anonymized Settlement Batches via Celo Sepolia.</p>
+            </div>
+            <div class="hidden sm:flex items-center space-x-2 text-sm text-gray-500">
+                <span class="flex h-3 w-3 relative">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                </span>
+                <span>Live Sync Active</span>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50 text-gray-500 text-sm uppercase tracking-wider font-semibold">
+                            <th class="p-6 pb-4">Transaction ID</th>
+                            <th class="p-6 pb-4">Sender Hash (SHA-256)</th>
+                            <th class="p-6 pb-4 text-right">Amount (Ksh)</th>
+                            <th class="p-6 pb-4 text-right">Timestamp</th>
+                            <th class="p-6 pb-4 text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 text-gray-700">
+                        <% if (transactions.length===0) { %>
+                            <tr>
+                                <td colspan="5" class="p-12 text-center text-gray-400">Waiting for Celo Relayer
+                                    batches...</td>
+                            </tr>
+                            <% } else { %>
+                                <% transactions.slice().reverse().forEach((tx, idx)=> { %>
+                                    <tr class="table-row-hover <%= idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50' %>">
+                                        <td class="p-6 font-mono text-sm text-brand-teal">
+                                            <%= tx.txId.substring(0, 16) %>...
+                                        </td>
+                                        <td class="p-6 font-mono text-xs text-gray-500" title="<%= tx.senderHash %>">
+                                            <%= tx.senderHash.substring(0, 24) %>...
+                                        </td>
+                                        <td
+                                            class="p-6 text-right font-mono font-medium <%= tx.amount > 1000000 ? 'text-red-500' : 'text-brand-charcoal' %>">
+                                            <%= tx.amount.toLocaleString() %>
+                                        </td>
+                                        <td class="p-6 text-right text-sm text-gray-500">
+                                            <%= new Date(tx.timestamp).toLocaleTimeString([], {hour: '2-digit' ,
+                                                minute:'2-digit', second:'2-digit'}) %>
+                                        </td>
+                                        <td class="p-6 text-center">
+                                            <% if(tx.amount> 1000000) { %>
+                                                <span
+                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Review</span>
+                                                <% } else { %>
+                                                    <span
+                                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Settled</span>
+                                                    <% } %>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Trust Indicators -->
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-blue-50/50 rounded-2xl p-6 border border-blue-100">
+                <svg class="w-8 h-8 text-brand-teal mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                    </path>
+                </svg>
+                <h4 class="font-bold text-brand-charcoal mb-2">Data Protection Act Compliant</h4>
+                <p class="text-sm text-gray-600">All PII is strictly hashed client-side via SHA-256 before analysis
+                    mapping.</p>
+            </div>
+            <div class="bg-amber-50/50 rounded-2xl p-6 border border-amber-100">
+                <svg class="w-8 h-8 text-brand-gold mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <h4 class="font-bold text-brand-charcoal mb-2">Subsidized L2 Rail</h4>
+                <p class="text-sm text-gray-600">Relayer gas-stations abstract blockchain UX, removing network friction
+                    for off-grid users.</p>
+            </div>
+            <div class="bg-teal-50/50 rounded-2xl p-6 border border-teal-100">
+                <svg class="w-8 h-8 text-brand-teal mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                    </path>
+                </svg>
+                <h4 class="font-bold text-brand-charcoal mb-2">Interoperable CBDC Ready</h4>
+                <p class="text-sm text-gray-600">Built atop EVM/Celo standards, seamlessly routing mock cKES and future
+                    CBDC standards natively.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-50 border-t border-gray-200 py-12 text-center text-sm text-gray-500">
+        <p>&copy; 2026 Mtiririko Node. Sandbox Reporting Interface.</p>
+    </footer>
+
+</body>
+
+</html>

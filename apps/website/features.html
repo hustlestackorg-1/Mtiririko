@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Mtiririko</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="preloader">
+        <div class="loader-logo">Features</div>
+        <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div id="noise-overlay"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <header id="site-header">
+        <nav id="main-nav" class="container">
+            <a href="index.html" class="logo">Mtiririko</a>
+            <ul class="nav-links">
+                <li><a href="features.html" style="color:white;">Features</a></li>
+                <li><a href="architecture.html">Architecture</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="https://github.com/mtiririko" class="btn btn-primary" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-transition" style="padding-top: 150px; min-height: 80vh; position: relative; z-index: 5;">
+        <div class="container">
+            <h1 class="glow-text text-center reveal">Built for Resilience</h1>
+            <p class="subtitle text-center reveal delay-1" style="margin: 1.5rem auto 4rem auto;">Engineered specifically for the realities of the African mobile-first ecosystem.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card glass-panel reveal opacity-init">
+                    <div class="icon-wrapper">🚀</div>
+                    <h3>Gasless Micro-Transactions</h3>
+                    <p>Seamlessly batched P2P transfers natively shielding mobile users from blockchain gas mechanics entirely. Users simply send value, and the network handles the Celo Sepolia settlement.</p>
+                </div>
+                <div class="feature-card glass-panel reveal delay-1 opacity-init">
+                    <div class="icon-wrapper">📡</div>
+                    <h3>Offline-First Architecture</h3>
+                    <p>Designed for persistent grid down-times and rural deadzones. Transactions queue fully encrypted on device and sync automatically via our specialized relayers when connectivity returns.</p>
+                </div>
+                <div class="feature-card glass-panel reveal delay-2 opacity-init">
+                    <div class="icon-wrapper">🔄</div>
+                    <h3>Automated Interoperability</h3>
+                    <p>Instantly map fiat inputs via Safaricom Daraja APIs into pegged cKES ERC-20 stablecoins. Fully protected with webhook idempotency, making top-ups native and frictionless.</p>
+                </div>
+                <div class="feature-card glass-panel reveal delay-3 opacity-init">
+                    <div class="icon-wrapper">🔒</div>
+                    <h3>Data Privacy Native</h3>
+                    <p>Integrated Apache Kafka & MongoDB streams provide real-time economic analytics dashboards while maintaining absolute anonymity via zero-knowledge hashed datasets.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="site-footer" style="margin-top: 4rem;">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Mtiririko</h3>
+                <p>Empowering the mobile-first economy.</p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="architecture.html">Architecture</a></li>
+                    <li><a href="security.html">Security</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mtiririko Project. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture - Mtiririko</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="preloader">
+        <div class="loader-logo">Architecture</div>
+        <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div id="noise-overlay"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <header id="site-header">
+        <nav id="main-nav" class="container">
+            <a href="index.html" class="logo">Mtiririko</a>
+            <ul class="nav-links">
+                <li><a href="features.html">Features</a></li>
+                <li><a href="architecture.html" style="color:white;">Architecture</a></li>
+                <li><a href="security.html">Security</a></li>
+                <li><a href="https://github.com/mtiririko" class="btn btn-primary" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-transition" style="padding-top: 150px; min-height: 80vh; position: relative; z-index: 5;">
+        <div class="container">
+            <h1 class="glow-text text-center reveal">Hybrid Layer Convergence</h1>
+            <p class="subtitle text-center reveal delay-1" style="margin: 1.5rem auto 4rem auto;">Mtiririko acts as a robust translation layer bringing the benefits of Web3 onto Web2 infrastructures smoothly.</p>
+            
+            <div class="arch-diagram glass-panel reveal delay-2 opacity-init" style="max-width: 1000px; margin: 0 auto; margin-bottom: 4rem;">
+                <div class="arch-box">React Native Wallet</div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-box highlight" style="position: relative;">
+                    Node.js Middleware
+                    <div style="font-size: 0.75rem; position: absolute; bottom: -25px; left:0; right:0; color:var(--text-muted); font-family:var(--font-body); font-weight: 400;">M-Pesa Webhooks & Kafka</div>
+                </div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-box">Celo Blockchain
+                    <div style="font-size: 0.75rem; position: absolute; bottom: -25px; left:0; right:0; color:var(--text-muted); font-family:var(--font-body); font-weight: 400;">BatchSettlement.sol</div>
+                </div>
+            </div>
+
+            <div class="features-grid" style="grid-template-columns: 1fr 1fr; gap: 3rem;">
+                <div class="feature-card glass-panel reveal">
+                    <h3>The M-Pesa On/Off Ramp Bridge</h3>
+                    <p>M-Pesa pushes webhooks (Daraja STK pushes) to our Middleware. The Middleware immediately communicates with our Celo smart contracts to mint or transfer equivalent cKES securely using idempotency tracking to avoid double spend via `MPESA99X` receipt tags.</p>
+                </div>
+                <div class="feature-card glass-panel reveal delay-1">
+                    <h3>Offline Batches</h3>
+                    <p>The mobile wallet buffers up to 20 queue items without a network connection. Once connection binds, a single EIP-712 formatted payload bursts out via the Relayer Node, decreasing base validation gas costs by up to 92% compared to sequential sending.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="site-footer" style="margin-top: 4rem;">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Mtiririko</h3>
+                <p>Empowering the mobile-first economy.</p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="architecture.html">Architecture</a></li>
+                    <li><a href="security.html">Security</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mtiririko Project. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

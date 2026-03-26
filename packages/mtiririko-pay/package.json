@@ -1,0 +1,23 @@
+{
+    "name": "mtiririko-pay",
+    "version": "1.0.0",
+    "description": "Merchant SDK for generating Mtiririko payment intents",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "keywords": [
+        "mtiririko",
+        "payments",
+        "sdk",
+        "web3"
+    ],
+    "author": "Mtiririko Core",
+    "license": "MIT",
+    "dependencies": {
+        "ethers": "^6.11.1"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0"
+    }
+}

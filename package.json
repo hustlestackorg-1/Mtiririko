@@ -1,0 +1,15 @@
+{
+    "name": "mtiririko",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "scripts": {
+        "postinstall": "echo 'Monorepo initialized'"
+    },
+    "dependencies": {
+        "kafkajs": "^2.2.4"
+    }
+}

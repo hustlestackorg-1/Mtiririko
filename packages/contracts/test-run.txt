@@ -1,0 +1,38 @@
+﻿
+
+  Phase 11: Cryptoeconomic Stress Tests
+    BatchSettlement: Relayer Profitability in Gas Spikes
+node.exe : Warning: Potentially unsafe deployment of 
+contracts/BatchSettlement.sol:BatchSettlement
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" 
+"C:\Users\Abigail Njeri\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: 
+    Potent...BatchSettlement:String) [], RemoteExcep  
+  tion
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+    You are using the `unsafeAllow.constructor` flag.
+
+      1) "before each" hook for "Should dynamically scale relayer fees when gas equivalent increases massively"
+
+
+  0 passing (1s)
+  1 failing
+
+  1) Phase 11: Cryptoeconomic Stress Tests
+       "before each" hook for "Should dynamically scale relayer fees when gas equivalent increases massively":
+     Error: VM Exception while processing transaction: reverted with reason string 'cKES: Insufficient backing in reserve'
+    at cKES.mint (contracts/cKES.sol:27)
+    at EdrProviderWrapper.request (C:\Users\Abigail Njeri\Desktop\Mtiririko\node_modules\hardhat\src\internal\hardhat-network\provider\provider.ts:453:41)
+    at HardhatEthersSigner.sendTransaction (C:\Users\Abigail Njeri\Desktop\Mtiririko\node_modules\@nomicfoundation\hardhat-ethers\src\signers.ts:185:18)
+    at send (C:\Users\Abigail Njeri\Desktop\Mtiririko\node_modules\ethers\src.ts\contract\contract.ts:313:20)
+    at Proxy.mint (C:\Users\Abigail Njeri\Desktop\Mtiririko\node_modules\ethers\src.ts\contract\contract.ts:352:16)
+    at Context.<anonymous> (test\economics.test.js:20:9)
+  
+
+
+
